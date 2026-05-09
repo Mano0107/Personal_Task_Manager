@@ -1,6 +1,7 @@
-# Task Management System
+# SmartSprint - AI Powered Task Management System
 
-A complete mini Task Management System built with FastAPI, PostgreSQL, and Vanilla JavaScript.
+## Project Overview
+SmartSprint is a complete, production-ready Task Management System designed to boost productivity through intelligent task prioritization. Built with a full-stack architecture, it leverages a robust FastAPI backend, a secure PostgreSQL database, and JWT authentication. The responsive, premium dashboard UI features a modern glassmorphism aesthetic. A standout feature is its AI-based task prioritization, which automatically evaluates task urgency based on deadlines and key phrases, helping users focus on what matters most.
 
 ## Tech Stack
 - **Frontend**: HTML, CSS (Custom Glassmorphism Design), Vanilla JavaScript
@@ -8,20 +9,26 @@ A complete mini Task Management System built with FastAPI, PostgreSQL, and Vanil
 - **Database**: PostgreSQL
 - **Authentication**: JWT Authentication
 
-## Features
-1. User Registration & Login
-2. JWT Authentication
-3. Task CRUD (Create, Read, Update, Delete)
-4. Mark Task as Complete
-5. Smart AI Priority Suggestion
-   - High: Due within 1 day or contains keywords (urgent, important, meeting)
-   - Medium: Due within 3 days
-   - Low: Otherwise
-6. Clean Folder Structure
-7. Responsive, Premium Dark-mode Glassmorphism UI
+## Key Features
+- Secure JWT Authentication
+- User Registration & Login
+- Task CRUD Operations
+- Task Completion Tracking
+- AI-Based Smart Priority Suggestions
+- PostgreSQL Integration
+- REST API Architecture
+- Responsive Glassmorphism Dashboard UI
+
+## AI-Based Intelligent Feature
+SmartSprint includes a rule-based intelligent task prioritization engine to enhance productivity. It automatically assigns priorities to tasks based on deadline proximity and urgency keyword detection.
+
+**Priority Logic:**
+- **High**: Tasks due within 24 hours OR containing critical keywords (e.g., *urgent*, *important*, *meeting*, *critical*).
+- **Medium**: Tasks due within 3 days.
+- **Low**: Tasks with longer deadlines.
 
 ## Project Structure
-```
+```text
 ├── backend/
 │   ├── app/
 │   │   ├── routes/
@@ -47,6 +54,17 @@ A complete mini Task Management System built with FastAPI, PostgreSQL, and Vanil
 │   │   ├── dashboard.js
 ```
 
+## Environment Variables
+
+Create a `.env` file inside the `backend` folder and configure the following variables:
+
+```env
+DATABASE_URL=postgresql://postgres:password@localhost/taskmanager
+SECRET_KEY=your_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
+
 ## Setup Instructions
 
 ### Database
@@ -69,5 +87,18 @@ A complete mini Task Management System built with FastAPI, PostgreSQL, and Vanil
    - `python -m http.server 3000`
 2. Navigate to `http://localhost:3000`
 
+## API Documentation
+
+Swagger UI is available for testing the API endpoints:
+http://localhost:8000/docs
+
+## Future Enhancements
+- Push notifications
+- Drag and drop tasks
+- AI deadline prediction
+- Task analytics
+- Mobile responsiveness
+- Team collaboration
+
 ## Author
-Built as a complete full-stack demonstration.
+Designed and developed as a comprehensive full-stack portfolio project, showcasing modern web development best practices, intelligent API design, and premium UI/UX aesthetics.
