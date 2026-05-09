@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initGreeting() {
     const hour = new Date().getHours();
     let greeting = 'Good Morning 👋';
-    
+
     if (hour >= 5 && hour < 12) {
         greeting = 'Good Morning 👋';
     } else if (hour >= 12 && hour < 17) {
@@ -29,7 +29,7 @@ function initGreeting() {
     } else {
         greeting = 'Good Night 🌌';
     }
-    
+
     const greetingEl = document.getElementById('greeting-title');
     if (greetingEl) {
         greetingEl.textContent = greeting;
@@ -42,7 +42,7 @@ const taskForm = document.getElementById('task-form');
 function setupEventListeners() {
     // Modal
     taskForm.addEventListener('submit', handleTaskSubmit);
-    
+
     // Search
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
@@ -98,7 +98,7 @@ function setupEventListeners() {
                     const defaultNav = document.querySelector('.nav-item[data-filter="all"]');
                     if (defaultNav) defaultNav.classList.add('active');
                 }
-                
+
                 currentFilter = filterVal;
                 renderTasks();
             }
@@ -147,7 +147,7 @@ function openModal(taskId = null) {
     taskForm.reset();
     document.getElementById('task-id').value = '';
     document.getElementById('modal-title').textContent = taskId ? 'Edit Task' : 'Create Task';
-    
+
     if (taskId) {
         const task = allTasks.find(t => t.id === taskId);
         if (task) {
@@ -159,7 +159,7 @@ function openModal(taskId = null) {
             }
         }
     }
-    
+
     modal.classList.add('active');
 }
 
@@ -169,23 +169,23 @@ function closeModal() {
 
 async function handleTaskSubmit(e) {
     e.preventDefault();
-    
+
     const id = document.getElementById('task-id').value;
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
     const dueDate = document.getElementById('due-date').value;
     const btn = document.getElementById('save-btn');
-    
+
     const payload = {
         title,
         description: description || null,
         due_date: dueDate || null
     };
-    
+
     try {
         btn.textContent = 'Saving...';
         btn.disabled = true;
-        
+
         if (id) {
             await fetchAPI(`/tasks/${id}`, {
                 method: 'PUT',
@@ -199,7 +199,7 @@ async function handleTaskSubmit(e) {
             });
             showToast('Task created successfully');
         }
-        
+
         closeModal();
         await loadTasks();
     } catch (error) {
@@ -229,23 +229,23 @@ function updateStats() {
     const completed = allTasks.filter(t => t.completed).length;
     const pending = total - completed;
     const highPriority = allTasks.filter(t => t.priority === 'High' && !t.completed).length;
-    
+
     const today = new Date().toISOString().split('T')[0];
     const dueToday = allTasks.filter(t => t.due_date === today && !t.completed).length;
 
     document.getElementById('stat-total').textContent = total;
     document.getElementById('stat-completed').textContent = completed;
     document.getElementById('stat-pending').textContent = pending;
-    
+
     const statToday = document.getElementById('stat-today');
     if (statToday) statToday.textContent = dueToday;
-    
+
     const statHigh = document.getElementById('stat-high');
     if (statHigh) statHigh.textContent = highPriority;
-    
+
     // Update summary text
-    document.getElementById('task-summary-text').textContent = 
-        pending > 0 
+    document.getElementById('task-summary-text').textContent =
+        pending > 0
             ? `You have ${pending} pending task${pending > 1 ? 's' : ''}.`
             : (total > 0 ? 'All caught up! Great job.' : 'No tasks yet. Create one to get started.');
 }
@@ -253,7 +253,7 @@ function updateStats() {
 function generateAIInsights() {
     const content = document.getElementById('insights-content');
     if (!content) return;
-    
+
     if (allTasks.length === 0) {
         content.innerHTML = '<div class="insight-item">Start by creating tasks. Our AI will analyze them and provide productivity insights here.</div>';
         return;
@@ -261,10 +261,10 @@ function generateAIInsights() {
 
     const pendingTasks = allTasks.filter(t => !t.completed);
     const today = new Date().toISOString().split('T')[0];
-    
+
     const overdue = pendingTasks.filter(t => t.due_date && t.due_date < today);
     const highPriority = pendingTasks.filter(t => t.priority === 'High');
-    
+
     let insightsHtml = '';
 
     if (overdue.length > 0) {
@@ -294,27 +294,27 @@ function generateAIInsights() {
 
 function renderTasks() {
     const container = document.getElementById('tasks-container');
-    
+
     // Apply filters
     let filteredTasks = allTasks.filter(task => {
         // Text Search
-        if (currentSearch && !task.title.toLowerCase().includes(currentSearch) && 
+        if (currentSearch && !task.title.toLowerCase().includes(currentSearch) &&
             (!task.description || !task.description.toLowerCase().includes(currentSearch))) {
             return false;
         }
-        
+
         // Category Filter
         if (currentFilter === 'pending') return !task.completed;
         if (currentFilter === 'completed') return task.completed;
         if (currentFilter === 'high') return task.priority === 'High';
         return true; // 'all'
     });
-    
+
     if (filteredTasks.length === 0) {
         const template = document.getElementById('empty-state-template');
         container.innerHTML = '';
         container.appendChild(template.content.cloneNode(true));
-        
+
         // Update empty state text based on context
         const emptyText = container.querySelector('#empty-state-text');
         if (emptyText && allTasks.length > 0) {
@@ -322,12 +322,12 @@ function renderTasks() {
         }
         return;
     }
-    
+
     const today = new Date().toISOString().split('T')[0];
-    
+
     container.innerHTML = filteredTasks.map(task => {
         const isOverdue = task.due_date && task.due_date < today && !task.completed;
-        
+
         return `
         <div class="task-card glass ${task.completed ? 'completed' : ''} priority-${task.priority}" onclick="openModal(${task.id})">
             <div class="task-header">
@@ -348,9 +348,9 @@ function renderTasks() {
                 <div class="task-actions">
                     <button class="action-btn complete" onclick="toggleComplete(${task.id}, ${task.completed}, event)" title="${task.completed ? 'Mark pending' : 'Mark complete'}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            ${task.completed 
-                                ? '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>' 
-                                : '<polyline points="20 6 9 17 4 12"></polyline>'}
+                            ${task.completed
+                ? '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>'
+                : '<polyline points="20 6 9 17 4 12"></polyline>'}
                         </svg>
                     </button>
                     <button class="action-btn" onclick="openModal(${task.id}); event.stopPropagation();" title="Edit">
@@ -398,12 +398,12 @@ async function deleteTask(id, e) {
 function escapeHtml(unsafe) {
     if (!unsafe) return '';
     return unsafe
-         .toString()
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
+        .toString()
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 /* --- Calendar Logic --- */
@@ -415,17 +415,17 @@ function renderCalendar() {
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
-    
+
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const startingDay = firstDay.getDay(); // 0 (Sun) to 6 (Sat)
     const totalDays = lastDay.getDate();
-    
+
     const prevMonthLastDay = new Date(year, month, 0).getDate();
-    
+
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     monthYearText.textContent = `${monthNames[month]} ${year}`;
-    
+
     // Clear previous cells (keep headers)
     const headers = `
         <div class="calendar-day-header">Su</div>
@@ -453,15 +453,15 @@ function renderCalendar() {
         const mStr = String(month + 1).padStart(2, '0');
         const dStr = String(i).padStart(2, '0');
         const dateStr = `${year}-${mStr}-${dStr}`;
-        
+
         let classList = 'calendar-cell current-month';
         if (dateStr === todayStr) classList += ' today';
         if (dateStr === selectedStr) classList += ' selected';
-        
+
         // Find tasks for this day
         const dayTasks = allTasks.filter(t => t.due_date === dateStr);
         let indicatorsHtml = '';
-        
+
         if (dayTasks.length > 0) {
             indicatorsHtml += '<div class="calendar-indicators">';
             // Show up to 3 dots based on priority/status
@@ -471,7 +471,7 @@ function renderCalendar() {
                 if (t.completed) pClass = 'completed';
                 else if (t.priority === 'High') pClass = 'high';
                 else if (t.priority === 'Medium') pClass = 'medium';
-                
+
                 indicatorsHtml += `<div class="indicator ${pClass}"></div>`;
             });
             indicatorsHtml += '</div>';
@@ -491,7 +491,7 @@ function renderCalendar() {
     }
 
     grid.innerHTML = headers + cellsHtml;
-    
+
     // Auto-update selected day tasks if it is currently open
     if (selectedStr) {
         showTasksForDate(selectedStr);
@@ -508,16 +508,16 @@ function showTasksForDate(dateStr) {
     const dayTasksDiv = document.getElementById('calendar-day-tasks');
     const dayTasksList = document.getElementById('calendar-day-tasks-list');
     const selectedDateHeader = document.getElementById('calendar-selected-date');
-    
+
     if (!dayTasksDiv || !dayTasksList) return;
-    
+
     const dayTasks = allTasks.filter(t => t.due_date === dateStr);
-    
+
     // Format date nice
     const d = new Date(dateStr);
     const niceDate = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
     selectedDateHeader.textContent = `Tasks for ${niceDate}`;
-    
+
     if (dayTasks.length === 0) {
         dayTasksList.innerHTML = '<p style="color:var(--text-muted); font-size: 13px;">No tasks due on this date.</p>';
     } else {
@@ -530,7 +530,7 @@ function showTasksForDate(dateStr) {
             `;
         }).join('');
     }
-    
+
     dayTasksDiv.classList.remove('hidden');
 }
 
@@ -564,23 +564,23 @@ async function initSettings() {
         const user = await fetchAPI('/auth/me');
         if (user && user.username) {
             const username = user.username;
-            
+
             const userEl = document.getElementById('settings-username');
             if (userEl) userEl.textContent = username;
-            
+
             const initials = username.split(' ')
                 .map(n => n[0])
                 .join('')
                 .substring(0, 2)
                 .toUpperCase();
-                
+
             const avatar = document.querySelector('.avatar-placeholder');
             if (avatar) avatar.textContent = initials;
         }
-    } catch(e) {
+    } catch (e) {
         console.error("Error loading profile", e);
     }
-    
+
     // Apply initial theme
     const darkModeSaved = localStorage.getItem('pref_pref-dark-mode');
     const isDarkMode = darkModeSaved === null ? true : (darkModeSaved === 'true');
@@ -597,7 +597,7 @@ function setupSettingsListeners() {
             applyAccentColor(color);
         });
     });
-    
+
     const toggles = document.querySelectorAll('.settings-card input[type="checkbox"]');
     toggles.forEach(toggle => {
         const key = 'pref_' + toggle.id;
@@ -607,7 +607,7 @@ function setupSettingsListeners() {
         }
         toggle.addEventListener('change', (e) => {
             localStorage.setItem(key, e.target.checked);
-            
+
             // Handle Dark Mode toggle explicitly
             if (toggle.id === 'pref-dark-mode') {
                 applyTheme(e.target.checked);
@@ -639,7 +639,7 @@ async function clearCompletedTasks() {
             }
             showToast('Completed tasks cleared');
             await loadTasks();
-        } catch(e) {
+        } catch (e) {
             showToast('Error clearing tasks', true);
         }
     }
@@ -650,7 +650,7 @@ function resetPreferences() {
         localStorage.clear();
         const token = localStorage.getItem('token');
         if (token) localStorage.setItem('token', token);
-        
+
         window.location.reload();
     }
 }
