@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="auth-container">
         <div class="glass auth-card">
@@ -32,10 +34,10 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Toast Container -->
     <div id="toast-container" class="toast-container"></div>
-    
+
     <script src="js/utils.js"></script>
     <script>
         if (localStorage.getItem('token')) {
@@ -48,16 +50,23 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const btn = document.getElementById('register-btn');
-            
+
             try {
                 btn.textContent = 'Creating account...';
                 btn.disabled = true;
-                
-                await fetchAPI('/auth/register', {
+
+                const response = await fetch(`${API_URL}/api/auth/register`, {
                     method: 'POST',
-                    body: JSON.stringify({ username, email, password })
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password
+                    })
                 });
-                
+
                 showToast('Registration successful! Please log in.');
                 window.location.href = 'login.html';
             } catch (error) {
@@ -69,4 +78,5 @@
         });
     </script>
 </body>
+
 </html>
