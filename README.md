@@ -67,7 +67,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 ## Setup Instructions
 
-### Database
+### Databasezz
 1. Make sure you have PostgreSQL installed and running.
 2. Create a database named `taskmanager`.
 
