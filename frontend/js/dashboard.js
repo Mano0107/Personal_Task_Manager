@@ -212,7 +212,7 @@ async function handleTaskSubmit(e) {
 
 async function loadTasks() {
     try {
-        const tasks = await fetchAPI('/tasks/');
+        const tasks = await fetchAPI('/api/tasks/');
         allTasks = tasks || [];
         updateStats();
         generateAIInsights();
@@ -561,7 +561,7 @@ async function initSettings() {
     });
 
     try {
-        const user = await fetchAPI('/auth/me');
+        const user = await fetchAPI('/api/auth/me');
         if (user && user.username) {
             const username = user.username;
 

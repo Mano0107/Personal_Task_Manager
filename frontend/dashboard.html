@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,69 @@
     <link rel="stylesheet" href="css/style.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body class="dashboard-body">
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                </svg>
                 <span>TaskManager</span>
             </div>
             <button class="mobile-close" onclick="toggleSidebar()">&times;</button>
         </div>
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active" data-view="dashboard" data-filter="all">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
                 Dashboard
             </a>
             <a href="#" class="nav-item" data-view="dashboard" data-filter="pending">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
                 My Tasks
             </a>
             <a href="#" class="nav-item" data-view="dashboard" data-filter="completed">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
                 Completed
             </a>
             <a href="#ai-insights-panel" class="nav-item" data-view="dashboard" id="nav-insights">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
                 AI Insights
             </a>
         </nav>
         <div class="sidebar-footer">
             <a href="#" class="nav-item" data-view="settings" id="nav-settings">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
                 Settings
             </a>
             <button class="nav-item logout-btn" onclick="logout()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
                 Logout
             </button>
         </div>
@@ -52,7 +81,11 @@
         <header class="top-header">
             <div class="header-left">
                 <button class="mobile-menu-btn" onclick="toggleSidebar()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
                 </button>
                 <div class="greeting-section">
                     <h2 id="greeting-title">Good Morning 👋</h2>
@@ -61,11 +94,17 @@
             </div>
             <div class="header-right">
                 <div class="search-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                     <input type="text" id="search-input" placeholder="Search tasks...">
                 </div>
                 <button class="btn btn-primary" onclick="openModal()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
                     New Task
                 </button>
             </div>
@@ -75,102 +114,127 @@
         <div id="view-dashboard" class="view-section active">
             <!-- Stats Section -->
             <section class="stats-grid">
-            <div class="stat-card glass">
-                <div class="stat-icon" style="background: rgba(124, 92, 255, 0.1); color: var(--accent);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                </div>
-                <div class="stat-info">
-                    <h3>Total Tasks</h3>
-                    <p id="stat-total">0</p>
-                </div>
-            </div>
-            <div class="stat-card glass">
-                <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1); color: var(--success);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <div class="stat-info">
-                    <h3>Completed</h3>
-                    <p id="stat-completed">0</p>
-                </div>
-            </div>
-            <div class="stat-card glass">
-                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                </div>
-                <div class="stat-info">
-                    <h3>Pending</h3>
-                    <p id="stat-pending">0</p>
-                </div>
-            </div>
-            <div class="stat-card glass">
-                <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                </div>
-                <div class="stat-info">
-                    <h3>Due Today</h3>
-                    <p id="stat-today">0</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="dashboard-content-grid">
-            <!-- Left Side: Filters & Tasks -->
-            <div class="tasks-section">
-                <div class="filters-container">
-                    <div class="filters" id="task-filters">
-                        <button class="filter-btn active" data-filter="all">All Tasks</button>
-                        <button class="filter-btn" data-filter="pending">Pending</button>
-                        <button class="filter-btn" data-filter="completed">Completed</button>
-                        <button class="filter-btn" data-filter="high">High Priority</button>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: rgba(124, 92, 255, 0.1); color: var(--accent);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Tasks</h3>
+                        <p id="stat-total">0</p>
                     </div>
                 </div>
-                
-                <div class="tasks-grid" id="tasks-container">
-                    <!-- Tasks will be loaded here -->
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1); color: var(--success);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Completed</h3>
+                        <p id="stat-completed">0</p>
+                    </div>
                 </div>
-            </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Pending</h3>
+                        <p id="stat-pending">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Due Today</h3>
+                        <p id="stat-today">0</p>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Right Side: Insights & Calendar -->
-            <div class="sidebar-widgets">
-                <!-- AI Insights Panel -->
-                <section class="ai-insights glass" id="ai-insights-panel">
-                    <div class="insights-header">
-                        <div class="insights-title">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sparkle-icon"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                            <h3>AI Productivity Insights</h3>
+            <div class="dashboard-content-grid">
+                <!-- Left Side: Filters & Tasks -->
+                <div class="tasks-section">
+                    <div class="filters-container">
+                        <div class="filters" id="task-filters">
+                            <button class="filter-btn active" data-filter="all">All Tasks</button>
+                            <button class="filter-btn" data-filter="pending">Pending</button>
+                            <button class="filter-btn" data-filter="completed">Completed</button>
+                            <button class="filter-btn" data-filter="high">High Priority</button>
                         </div>
                     </div>
-                    <div class="insights-content" id="insights-content">
-                        <div class="insight-item loading-insight">
-                            <div class="shimmer-line"></div>
-                            <div class="shimmer-line short"></div>
-                        </div>
-                    </div>
-                </section>
 
-                <!-- Calendar Widget -->
-                <section class="calendar-widget glass">
-                    <div class="calendar-header">
-                        <button class="btn-icon" id="prev-month" title="Previous Month">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-                        <h3 id="calendar-month-year">Month Year</h3>
-                        <button class="btn-icon" id="next-month" title="Next Month">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </button>
+                    <div class="tasks-grid" id="tasks-container">
+                        <!-- Tasks will be loaded here -->
                     </div>
-                    <div class="calendar-grid" id="calendar-grid">
-                        <!-- Calendar will be populated by JS -->
-                    </div>
-                    <div id="calendar-day-tasks" class="calendar-day-tasks hidden">
-                        <h4 id="calendar-selected-date">Tasks</h4>
-                        <div id="calendar-day-tasks-list"></div>
-                    </div>
-                </section>
-            </div>
+                </div>
+
+                <!-- Right Side: Insights & Calendar -->
+                <div class="sidebar-widgets">
+                    <!-- AI Insights Panel -->
+                    <section class="ai-insights glass" id="ai-insights-panel">
+                        <div class="insights-header">
+                            <div class="insights-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    class="sparkle-icon">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                                <h3>AI Productivity Insights</h3>
+                            </div>
+                        </div>
+                        <div class="insights-content" id="insights-content">
+                            <div class="insight-item loading-insight">
+                                <div class="shimmer-line"></div>
+                                <div class="shimmer-line short"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Calendar Widget -->
+                    <section class="calendar-widget glass">
+                        <div class="calendar-header">
+                            <button class="btn-icon" id="prev-month" title="Previous Month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <h3 id="calendar-month-year">Month Year</h3>
+                            <button class="btn-icon" id="next-month" title="Next Month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Calendar will be populated by JS -->
+                        </div>
+                        <div id="calendar-day-tasks" class="calendar-day-tasks hidden">
+                            <h4 id="calendar-selected-date">Tasks</h4>
+                            <div id="calendar-day-tasks-list"></div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-        
+
         <!-- Settings View -->
         <div id="view-settings" class="view-section hidden">
             <div class="settings-page">
@@ -178,7 +242,7 @@
                     <h2>Account Settings</h2>
                     <p>Manage your preferences, appearance, and notifications.</p>
                 </div>
-                
+
                 <div class="settings-grid">
                     <!-- Profile -->
                     <div class="settings-card glass">
@@ -196,42 +260,48 @@
                         <h3>Appearance</h3>
                         <div class="setting-row">
                             <span>Dark Mode</span>
-                            <label class="switch"><input type="checkbox" id="pref-dark-mode" checked><span class="slider"></span></label>
+                            <label class="switch"><input type="checkbox" id="pref-dark-mode" checked><span
+                                    class="slider"></span></label>
                         </div>
                         <div class="setting-row">
                             <span>Accent Color</span>
                             <div class="color-picker">
-                                <button class="color-btn active" data-color="#7C5CFF" style="background:#7C5CFF;"></button>
+                                <button class="color-btn active" data-color="#7C5CFF"
+                                    style="background:#7C5CFF;"></button>
                                 <button class="color-btn" data-color="#3B82F6" style="background:#3B82F6;"></button>
                                 <button class="color-btn" data-color="#10B981" style="background:#10B981;"></button>
                                 <button class="color-btn" data-color="#EC4899" style="background:#EC4899;"></button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Notification Preferences -->
                     <div class="settings-card glass">
                         <h3>Notifications</h3>
                         <div class="setting-row">
                             <span>Due date reminders</span>
-                            <label class="switch"><input type="checkbox" id="pref-reminders" checked><span class="slider"></span></label>
+                            <label class="switch"><input type="checkbox" id="pref-reminders" checked><span
+                                    class="slider"></span></label>
                         </div>
                         <div class="setting-row">
                             <span>Overdue task alerts</span>
-                            <label class="switch"><input type="checkbox" id="pref-overdue" checked><span class="slider"></span></label>
+                            <label class="switch"><input type="checkbox" id="pref-overdue" checked><span
+                                    class="slider"></span></label>
                         </div>
                     </div>
-                    
+
                     <!-- Calendar & Productivity -->
                     <div class="settings-card glass">
                         <h3>Productivity & Calendar</h3>
                         <div class="setting-row">
                             <span>Show completed tasks on calendar</span>
-                            <label class="switch"><input type="checkbox" id="pref-cal-completed" checked><span class="slider"></span></label>
+                            <label class="switch"><input type="checkbox" id="pref-cal-completed" checked><span
+                                    class="slider"></span></label>
                         </div>
                         <div class="setting-row">
                             <span>Enable AI Insights panel</span>
-                            <label class="switch"><input type="checkbox" id="pref-ai-insights" checked><span class="slider"></span></label>
+                            <label class="switch"><input type="checkbox" id="pref-ai-insights" checked><span
+                                    class="slider"></span></label>
                         </div>
                     </div>
 
@@ -239,8 +309,10 @@
                     <div class="settings-card glass">
                         <h3>Account Actions</h3>
                         <div class="action-buttons">
-                            <button class="btn btn-secondary" onclick="clearCompletedTasks()">Clear Completed Tasks</button>
-                            <button class="btn btn-secondary" style="color: var(--danger); border-color: var(--danger);" onclick="resetPreferences()">Reset Preferences</button>
+                            <button class="btn btn-secondary" onclick="clearCompletedTasks()">Clear Completed
+                                Tasks</button>
+                            <button class="btn btn-secondary" style="color: var(--danger); border-color: var(--danger);"
+                                onclick="resetPreferences()">Reset Preferences</button>
                         </div>
                     </div>
                 </div>
@@ -279,21 +351,31 @@
     <template id="empty-state-template">
         <div class="empty-state glass">
             <div class="empty-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
             </div>
             <h3>No tasks found</h3>
             <p id="empty-state-text">Get started by creating a new task to boost your productivity.</p>
             <button class="btn btn-primary" onclick="openModal()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
                 Create New Task
             </button>
         </div>
     </template>
-    
+
     <!-- Toast Container -->
     <div id="toast-container" class="toast-container"></div>
 
-    <script src="js/utils.js?v=2"></script>
-    <script src="js/dashboard.js?v=2"></script>
+    <script src="js/utils.js?v=3"></script>
+    <script src="js/dashboard.js?v=3"></script>
 </body>
+
 </html>
