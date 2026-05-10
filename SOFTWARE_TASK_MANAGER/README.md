@@ -252,11 +252,12 @@ http://localhost:8000/docs
 
 # Author
 
-Developed as a full-stack portfolio project demonstrating:
+Developed by MANORANJAN K as part of a full-stack internship assessment project demonstrating:
 
-* Modern API architecture
-* Database integration
-* Authentication systems
-* Intelligent task management
-* Responsive UI/UX design
-* Full-stack development practices
+* User authentication system
+* Task CRUD operations
+* PostgreSQL database integration
+* AI-based task prioritization
+* Responsive dashboard UI
+* Full-stack development using FastAPI and JavaScript
+
